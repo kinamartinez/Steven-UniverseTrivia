@@ -2,7 +2,7 @@
 <html ng-app="myAngularQuizApp" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Quiz</title>
+    <title>Steven Universe Trivia</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway" rel="stylesheet">
     <link data-require="bootstrap-css@*" data-semver="4.0.0-alpha.2" rel="stylesheet"
@@ -13,101 +13,122 @@
 
 </head>
 <body class="fontsRaleway">
-<div ng-controller="listCtrl as list" class="container">
-    <div class="page-header">
-        <img src="https://cdn.worldvectorlogo.com/logos/steven-universe.svg" class="headerImg">
-        <h4>Learn about all Steven Universe Show below before you decide to take on the <strong class="title">STEVEN
-            QUIZ</strong>
-        </h4>
-    </div>
+<div class="container">
+    <img src="https://cdn.worldvectorlogo.com/logos/steven-universe.svg" class="headerImg">
+    <div ng-controller="listCtrl as list" ng-hide="list.quizFactoryObj.quizActive">
+        <div class="page-header">
 
-    <div>
-        <md-content class="md-padding">
-
-            <form ng-submit="$event.preventDefault()">
-                <md-autocomplete
-                        md-selected-item="list.selectedItem"
-                        md-search-text-change="list.searchTextChange(list.searchText)"
-                        md-search-text="list.searchText"
-                        md-selected-item-change="list.searchTextChange(item.name)"
-                        md-items="item in list.gemsData | filter:list.searchText"
-                        md-item-text="item.name"
-                        md-min-length="0"
-                        placeholder="You can start search...">
-                    <md-item-template>
-                        <span md-highlight-text="list.searchText" md-highlight-flags="^i">{{item.name}}</span>
-                    </md-item-template>
-                </md-autocomplete>
-            </form>
-        </md-content>
-        <!--<form class="form-inline well well-sm clearfix">-->
-        <!--esta forma la usaba para filtrar la info y buscar, sin autocomplete, entonces creo el ng-model y creo en el controller
-        una variable vacia y le digo al ng repeat que filtre-->
-
-        <!--<input-->
-        <!--type="text"-->
-        <!--placeholder="Search..."-->
-        <!--ng-model="list.search">-->
-        <!--</form>-->
-        <div class="row fontsRaleway">
-            <div class="col-sm-6" ng-repeat="character in list.pageData">
-                <div class="well well-sm">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img ng-src="{{character.image}}"
-                                 class="img-rounded img-responsive well-image marginTop-15">
-                        </div>
-                        <div class="col-md-8">
-                            <h4>{{character.name}}</h4>
-                            <p><strong>Specie: </strong>{{character.species}}</p>
-                            <p><strong>Sex: </strong>{{character.sex}}</p>
-                            <p><strong>Weapons: </strong>{{character.weapons}}</p>
-                            <p><strong>Gemstone: </strong>{{character.gemstone}}</p>
-                            <p class="descrip"><strong>Description: </strong>{{character.description}}</p>
-                            <button class="btn btn-primary pull-right"
-                                    data-toggle="modal"
-                                    data-target="#character-info"
-                                    ng-click="list.changeActiveCharacter(character)">Learn More
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h2>Learn about all Steven Universe before you decide to take on the
+                <button class="btn btn-warning pull-right" ng-click="list.quizActivate()"><strong class="title">steven
+                    quiz</strong>
+                </button>
+            </h2>
         </div>
-        <div class="modal" id="character-info">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="title">{{list.activeCharacter.name |uppercase}}</h5>
-                    </div>
-                    <div class="modal-body">
+
+        <div>
+            <md-content class="md-padding">
+
+                <form ng-submit="$event.preventDefault()">
+                    <md-autocomplete
+                            md-selected-item="list.selectedItem"
+                            md-search-text-change="list.searchTextChange(list.searchText)"
+                            md-search-text="list.searchText"
+                            md-selected-item-change="list.searchTextChange(item.name)"
+                            md-items="item in list.gemsData | filter:list.searchText"
+                            md-item-text="item.name"
+                            md-min-length="0"
+                            placeholder="You can start search...">
+                        <md-item-template>
+                            <span md-highlight-text="list.searchText" md-highlight-flags="^i">{{item.name}}</span>
+                        </md-item-template>
+                    </md-autocomplete>
+
+                </form>
+            </md-content>
+            <!--<form class="form-inline well well-sm clearfix">-->
+            <!--esta forma la usaba para filtrar la info y buscar, sin autocomplete, entonces creo el ng-model y creo en el controller
+            una variable vacia y le digo al ng repeat que filtre-->
+
+            <!--<input-->
+            <!--type="text"-->
+            <!--placeholder="Search..."-->
+            <!--ng-model="list.search">-->
+            <!--</form>-->
+            <div class="row fontsRaleway">
+                <div class="col-sm-6" ng-repeat="character in list.pageData">
+                    <div class="well well-sm">
                         <div class="row">
-                            <div class="col-xs-8 col-xs-offset-4">
-                                <img ng-src="{{list.activeCharacter.image}}" class="img-rounded img-responsive">
+                            <div class="col-md-4">
+                                <img ng-src="{{character.image}}"
+                                     class="img-rounded img-responsive well-image marginTop-15">
                             </div>
-                        </div>
-                        <div class="row top-buffer">
-                            <div class="col-md-6">
-                                <p><strong>Specie: </strong>{{list.activeCharacter.species}}</p>
-                                <p><strong>Sex: </strong>{{list.activeCharacter.sex}}</p>
-                                <p><strong>Weapons: </strong>{{list.activeCharacter.weapons}}</p>
-                                <p><strong>Gemstone: </strong>{{list.activeCharacter.gemstone}}</p>
-                            </div>
-                            <div class="col-xs-12 top-buffer">
-                                <p>{{list.activeCharacter.description}}</p>
-                                <button class="btn btn-danger pull-right title"
-                                        data-dismiss="modal">close
+                            <div class="col-md-8">
+                                <h4>{{character.name}}</h4>
+                                <p><strong>Specie: </strong>{{character.species}}</p>
+                                <p><strong>Sex: </strong>{{character.sex}}</p>
+                                <p><strong>Weapons: </strong>{{character.weapons}}</p>
+                                <p><strong>Gemstone: </strong>{{character.gemstone}}</p>
+                                <p class="descrip"><strong>Description: </strong>{{character.description}}</p>
+                                <button class="btn btn-primary pull-right"
+                                        data-toggle="modal"
+                                        data-target="#character-info"
+                                        ng-click="list.changeActiveCharacter(character)">Learn More
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="modal" id="character-info">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="title">{{list.activeCharacter.name |uppercase}}</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-8 col-xs-offset-4">
+                                    <img ng-src="{{list.activeCharacter.image}}" class="img-rounded img-responsive">
+                                </div>
+                            </div>
+                            <div class="row top-buffer">
+                                <div class="col-md-6">
+                                    <p><strong>Specie: </strong>{{list.activeCharacter.species}}</p>
+                                    <p><strong>Sex: </strong>{{list.activeCharacter.sex}}</p>
+                                    <p><strong>Weapons: </strong>{{list.activeCharacter.weapons}}</p>
+                                    <p><strong>Gemstone: </strong>{{list.activeCharacter.gemstone}}</p>
+                                </div>
+                                <div class="col-xs-12 top-buffer">
+                                    <p>{{list.activeCharacter.description}}</p>
+                                    <button class="btn btn-danger pull-right title"
+                                            data-dismiss="modal">close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <uib-pagination class="pagination" total-items="list.totalItems" ng-change="list.onPageChange(currentPage)"
+                            ng-model="currentPage" items-per-page="list.itemsPerPage" max-size="list.maxSize"
+                            boundary-link-numbers="true"></uib-pagination>
+        </div>
+    </div><!-- Quiz Controller -->
+    <div ng-controller="quizCtrl as quiz" ng-show="!list.quizFactoryObj.quizActive">
+        <div class="row">
+            <div class="col-xs-8">
+                <h2>Progress: </h2>
+                <div class="btn-toolbar">
+                    <button class="btn"
+                            ng-repeat="question in quiz.dataServiceObj.quizQuestions"
+                            ng-class="{'btn-danger': question.selected !== null, 'btn-warning': question.selected === null}">
+                        <span ng-class="{'glyphicon-star-empty': question.selected !== null, 'glyphicon-question-sign': question.selected === null}"></span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-    <uib-pagination class="pagination" total-items="list.totalItems" ng-change="list.onPageChange(currentPage)"
-                    ng-model="currentPage" items-per-page="list.itemsPerPage" max-size="list.maxSize"
-                    boundary-link-numbers="true"></uib-pagination>
 </div>
 
 <script src="../angular/angular.js"></script>
@@ -125,6 +146,9 @@
         crossorigin="anonymous"></script>
 <script src="js/app.js"></script>
 <script src="js/controllers/listCtrl.js"></script>
+<script src="js/factories/quizFactory.js"></script>
+<script src="js/controllers/quizCtrl.js"></script>
+<script src="js/factories/dataService.js"></script>
 
 
 </body>
