@@ -308,7 +308,7 @@ app.factory('dataService', function () {
         },
 
     ];
-    const correctAnswers = [1, 2, 3, 0, 2, 0, 3, 2, 0, 3];
+    const correctAnswers = [4, 2, 2, 4, 2, 4, 1, 2, 2, 4];
 
     const dataObj = {
         gemsData: gemsData,

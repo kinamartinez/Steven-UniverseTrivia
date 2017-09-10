@@ -21,7 +21,7 @@ app.controller('listCtrl', ['quizFactory', 'dataService', function (quizFactory,
 
 
     function quizActivate() {
-        vm.quizFactoryObj.changeState(true);
+        vm.quizFactoryObj.changeState('quiz',true);
 
     }
 

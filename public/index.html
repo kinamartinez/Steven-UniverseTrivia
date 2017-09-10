@@ -148,16 +148,16 @@
                 </div>
             </div>
         </div> <!--area de las preguntas-->
-        <div class="row">
-             <div class="alert alert-danger" ng-show="quiz.error">
-                 Humans just lead short, boring, insignificant lives, so they make up stories to feel like they're
-                 a part of something bigger <span class="cursive">---Pearl</span>
-                 <br>
-                 BTW.. You have not answered all the questions yet!!
-                 <button ng-click="quiz.error = false" class="close">&times</button>
-             </div>
+        <div class="row" ng-hide="quiz.finish">
+            <div class="alert alert-danger" ng-show="quiz.error" >
+                Humans just lead short, boring, insignificant lives, so they make up stories to feel like they're
+                a part of something bigger <span class="cursive">---Pearl</span>
+                <br>
+                BTW.. You have not answered all the questions yet!!
+                <button ng-click="quiz.error = false" class="close">&times</button>
+            </div>
             <h3>Question: </h3>
-            <div class="well well-sm">
+            <div class="well well-sm" >
                 <div class="row" ng-if="quiz.dataServiceObj.quizQuestions[quiz.activeQuestion].type === 'text'">
                     <div class="col-xs-12">
                         <h4>{{quiz.activeQuestion +1+'. '+
@@ -190,8 +190,18 @@
             </div>
             <button class="btn btn-warning pull-right" ng-click="quiz.questionAnswered()">Continue</button>
         </div>
+        <div class="well well-sm" ng-show="quiz.finish">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Are you sure you want to submit your answers?</h3>
+                    <button class="btn btn-success" ng-click="finishAnswers()">Yes</button>
+                    <button class="btn btn-danger" ng-click="quiz.finish = false">No</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 
 <script src="../angular/angular.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.js"></script>

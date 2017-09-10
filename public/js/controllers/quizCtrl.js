@@ -9,10 +9,11 @@ app.controller('quizCtrl', ['quizFactory', 'dataService', function (quizFactory,
     vm.activeQuestion = 0;
     vm.questionAnswered = questionAnswered;
     vm.setActiveQuestion = setActiveQuestion;
-    let numQuestionAnswered = 0;
+    vm.finishAnswers  = finishAnswers;
     vm.selectedAnswer = selectedAnswer;
     vm.error = false;
     vm.finish = false;
+    let numQuestionAnswered = 0;
 
     console.log(vm.dataServiceObj.quizQuestions.length);
 
@@ -26,7 +27,7 @@ app.controller('quizCtrl', ['quizFactory', 'dataService', function (quizFactory,
                 // entonces nos devuelva a la posicion 0
                 vm.activeQuestion = vm.activeQuestion < quizLength ? ++vm.activeQuestion : 0;
                 if (vm.activeQuestion === 0) {
-                    vm.error = true
+                    vm.error = true;
                 }
                 if (dataService.quizQuestions[vm.activeQuestion].selected === null) {
                     breakOut = true;
@@ -51,7 +52,7 @@ app.controller('quizCtrl', ['quizFactory', 'dataService', function (quizFactory,
                 }
                 vm.error = false;
                 vm.finish = true;
-                return
+                return;
             }
         }
         setActiveQuestion();
@@ -59,6 +60,18 @@ app.controller('quizCtrl', ['quizFactory', 'dataService', function (quizFactory,
 
     function selectedAnswer(index) {
         vm.dataServiceObj.quizQuestions[vm.activeQuestion].selected = index;
+
+    }
+    function finishAnswers() {
+
+       numQuestionAnswered = 0;
+       vm.finish = false;
+       vm.activeQuestion = 0;
+       vm.quizFactoryObj.markQuiz();
+       vm.quizFactoryObj.changeState('quiz', false);
+       vm.quizFactoryObj.changeState('results', true);
+
+
 
     }
 
