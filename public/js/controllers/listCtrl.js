@@ -20,13 +20,8 @@ app.controller('listCtrl', ['quizFactory', 'dataService', function (quizFactory,
     vm.quizActivate = quizActivate;
 
 
-
-
     function quizActivate() {
-        console.log('antes', vm.quizFactoryObj.quizActive);
         vm.quizFactoryObj.changeState(true);
-        console.log('dsps', vm.quizFactoryObj.quizActive);
-        console.log('soy el quiz activate');
 
     }
 

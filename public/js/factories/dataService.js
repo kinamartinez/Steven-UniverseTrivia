@@ -52,10 +52,10 @@ app.factory('dataService', function () {
                     answer: 'https://carboncostume.com/wordpress/wp-content/uploads/2015/10/Ruby.jpg'
                 },
                 {
-                    answer: 'https://vignette3.wikia.nocookie.net/steven-universe/images/6/64/Dan_Sapphy_ur_Freezies_with_Gem.png/revision/latest/scale-to-width-down/1000?cb=20151106214440'
+                    answer: 'https://pre03.deviantart.net/823e/th/pre/f/2016/170/a/1/sapphire___steven_universe_by_moonlitmoonpies-da6spqs.png'
                 },
                 {
-                    answer: 'https://vignette1.wikia.nocookie.net/steven-universe/images/1/16/GarnetByKmes.png/revision/latest/scale-to-width-down/1000?cb=20160123075715'
+                    answer: 'http://3.bp.blogspot.com/-G7rYDrWLrTo/VcskMypK2_I/AAAAAAAABLo/-QQIJcCq-sg/s1600/garnet1.png'
                 },
                 {
                     answer: 'https://pre04.deviantart.net/7c3a/th/pre/f/2017/206/3/d/steven_universe___emerald_by_afroampharos-dbhm758.png'
@@ -69,13 +69,13 @@ app.factory('dataService', function () {
             text: 'Who is Lapis, Jasper and Peridot\'s leader',
             possibilities: [
                 {
-                    answer: 'https://vignette1.wikia.nocookie.net/steven-universe/images/d/df/That_Will_Be_All_YD_with_Cloak_by_Lenhi.png/revision/latest/scale-to-width-down/1000?cb=20170531201946'
+                    answer: 'https://i.ytimg.com/vi/5ymqRrmLzNI/maxresdefault.jpg'
                 },
                 {
                     answer: 'http://ll-c.ooyala.com/e1/Yzb3Z3YjE6j_3VqEHM0w0lkdd6FtWLVe/Ut_HKthATH4eww8X4xMDoxOjBzMTt2bJ'
                 },
                 {
-                    answer: 'https://vignette4.wikia.nocookie.net/steven-universe/images/3/31/Topaz_%28fusion%29.png/revision/latest?cb=20170506072835'
+                    answer: 'http://ll-c.ooyala.com/e1/Zib3Z3YjE6VqLZRo0Hzzx1KwIEtqKm16/promo324335229'
                 },
                 {
                     answer: 'http://ll-c.ooyala.com/e1/91MXd0YjE6EE7YuIX2PQqvuPI5tVDskv/promo323650836'
@@ -152,13 +152,13 @@ app.factory('dataService', function () {
                     answer: 'https://carboncostume.com/wordpress/wp-content/uploads/2015/10/Garnet.jpg'
                 },
                 {
-                    answer: 'https://vignette1.wikia.nocookie.net/steven-universe/images/f/f9/Rose_Quartz_-_Weaponized.png/revision/latest?cb=20160822210727'
+                    answer: 'https://i.pinimg.com/originals/9e/7d/d2/9e7dd22af9c7bfa13e4b566cadda2481.jpg'
                 },
                 {
                     answer: 'https://i.pinimg.com/736x/df/e5/77/dfe577854bb84ed682928949c1270b19--steven-universe-pictures-steven-universe-sardonyx.jpg'
                 },
                 {
-                    answer: 'https://vignette3.wikia.nocookie.net/gemcrust/images/7/73/SugilitebyJudgekoo.png/revision/latest?cb=20160911185913'
+                    answer: 'https://i.ytimg.com/vi/vQt3GTzeFDU/maxresdefault.jpg'
                 }
             ],
             selected: null,

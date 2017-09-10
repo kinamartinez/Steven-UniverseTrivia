@@ -18,11 +18,11 @@
     <div ng-controller="listCtrl as list" ng-hide="list.quizFactoryObj.quizActive">
         <div class="page-header">
 
-            <h2>Learn about all Steven Universe before you decide to take on the
+            <h3>Learn about all Steven Universe before you decide to take on the
                 <button class="btn btn-warning pull-right" ng-click="list.quizActivate()"><strong class="title">steven
                     quiz</strong>
                 </button>
-            </h2>
+            </h3>
         </div>
 
         <div>
@@ -115,18 +115,80 @@
                             boundary-link-numbers="true"></uib-pagination>
         </div>
     </div><!-- Quiz Controller -->
-    <div ng-controller="quizCtrl as quiz" ng-show="!list.quizFactoryObj.quizActive">
-        <div class="row">
+    <div ng-controller="quizCtrl as quiz" ng-show="quiz.quizFactoryObj.quizActive">
+        <div class="row styleRowButtons">
             <div class="col-xs-8">
                 <h2>Progress: </h2>
                 <div class="btn-toolbar">
                     <button class="btn"
                             ng-repeat="question in quiz.dataServiceObj.quizQuestions"
-                            ng-class="{'btn-danger': question.selected !== null, 'btn-warning': question.selected === null}">
-                        <span ng-class="{'glyphicon-star-empty': question.selected !== null, 'glyphicon-question-sign': question.selected === null}"></span>
+                            ng-class="{'btn-danger': question.selected !== null, 'btn-warning': question.selected === null}"
+                            ng-click="quiz.setActiveQuestion($index)">
+                        <span class="glyphicon"
+                              ng-class="{'glyphicon-star': question.selected !== null, 'glyphicon-question-sign': question.selected === null}"></span>
+
                     </button>
                 </div>
             </div>
+            <div class="col-xs-4 paddingTop-5">
+                <div class="row">
+
+                    <div class="col-sm-4 styleBtnLegend">
+                        <button class="btn btn-danger">
+                            <span class="glyphicon glyphicon-star"></span>
+                        </button>
+                        <p>Answered</p>
+                    </div>
+                    <div class="col-sm-4 styleBtnLegend">
+                        <button class="btn btn-warning">
+                            <span class="glyphicon glyphicon-question-sign"></span>
+                        </button>
+                        <p>Unanswered</p>
+                    </div>
+                </div>
+            </div>
+        </div> <!--area de las preguntas-->
+        <div class="row">
+             <div class="alert alert-danger" ng-show="quiz.error">
+                 Humans just lead short, boring, insignificant lives, so they make up stories to feel like they're
+                 a part of something bigger <span class="cursive">---Pearl</span>
+                 <br>
+                 BTW.. You have not answered all the questions yet!!
+                 <button ng-click="quiz.error = false" class="close">&times</button>
+             </div>
+            <h3>Question: </h3>
+            <div class="well well-sm">
+                <div class="row" ng-if="quiz.dataServiceObj.quizQuestions[quiz.activeQuestion].type === 'text'">
+                    <div class="col-xs-12">
+                        <h4>{{quiz.activeQuestion +1+'. '+
+                            quiz.dataServiceObj.quizQuestions[quiz.activeQuestion].text}}</h4>
+                        <div class="row">
+                            <div class="col-sm-6 paddingLeft"
+                                 ng-repeat="preguntas in quiz.dataServiceObj.quizQuestions[quiz.activeQuestion].possibilities">
+                                <h4 class="respuestas"
+                                    ng-class="{'bg-danger': quiz.dataServiceObj.quizQuestions[quiz.activeQuestion].selected === $index}"
+                                    ng-click="quiz.selectedAnswer($index)"
+                                >{{preguntas.answer}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-if="quiz.dataServiceObj.quizQuestions[quiz.activeQuestion].type === 'image'">
+                    <div class="col-xs-12">
+                        <h4>{{quiz.activeQuestion +1+'. '+
+                            quiz.dataServiceObj.quizQuestions[quiz.activeQuestion].text}}</h4>
+                        <div class="row">
+                            <div class="col-sm-6 paddingLeft"
+                                 ng-repeat="preguntas in quiz.dataServiceObj.quizQuestions[quiz.activeQuestion].possibilities">
+                                <img ng-src="{{preguntas.answer}}" class="respuestasImg"
+                                     ng-class="{'bg-danger': quiz.dataServiceObj.quizQuestions[quiz.activeQuestion].selected === $index}"
+                                     ng-click="quiz.selectedAnswer($index)"> </img>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-warning pull-right" ng-click="quiz.questionAnswered()">Continue</button>
         </div>
     </div>
 </div>

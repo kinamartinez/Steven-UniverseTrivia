@@ -7,15 +7,19 @@
     font-weight: normal;
     font-style: normal;
 }
-.backgroundColor{
+
+.backgroundColor {
     background-color: black;
 }
-.modal-body{
+
+.modal-body {
     font-family: 'Raleway', sans-serif;
 }
-.fontsRaleway{
+
+.fontsRaleway {
     font-family: 'Raleway', sans-serif;
 }
+
 .title {
     font-family: "Crystal Universe Regular", 'sans-serif' !important;
 }
@@ -36,9 +40,58 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
-.marginTop-15{
+
+.marginTop-15 {
     margin-top: 15px;
 }
-.headerImg{
-    width: 50%;
+
+.headerImg {
+    width: 30%;
+}
+
+.styleBtnLegend {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.paddingTop-5{
+    padding-top: 5%;
+}
+.styleRowButtons{
+    border: solid 1px lightgray;
+    margin-top: 25px;
+}
+.respuestas{
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: solid 1px lightgray;
+}
+
+.respuestas:hover{
+    cursor: pointer;
+}
+
+.respuestasImg {
+    cursor: pointer;
+    width: 350px;
+    height: 225px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.respuestasImg img{
+    width: 100%;
+    height: auto;
+}
+.paddingLeft{
+    padding-left: 115px!important;
+}
+.bg-danger{
+    opacity: 0.2!important;
+    font-weight: bold!important;
+}
+.cursive{
+    font-style: italic;
+    font-weight: bold;
 }
