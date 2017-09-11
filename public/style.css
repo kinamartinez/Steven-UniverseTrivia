@@ -84,6 +84,12 @@
     width: 100%;
     height: auto;
 }
+.respuestasImg.bg-success{
+    border: 3px solid greenyellow;
+}
+.respuestasImg.bg-danger{
+    border: 3px solid red;
+}
 .paddingLeft{
     padding-left: 115px!important;
 }

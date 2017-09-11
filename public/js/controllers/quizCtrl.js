@@ -40,7 +40,7 @@ app.controller('quizCtrl', ['quizFactory', 'dataService', function (quizFactory,
 
     function questionAnswered() {
         const quizLength = vm.dataServiceObj.quizQuestions.length;
-        if (dataService.quizQuestions[vm.questionAnswered] !== null) {
+        if (dataService.quizQuestions[vm.activeQuestion] !== null) {
             numQuestionAnswered++;
             if (numQuestionAnswered >= quizLength) {
                 //Se finaliza el quiz
@@ -70,9 +70,6 @@ app.controller('quizCtrl', ['quizFactory', 'dataService', function (quizFactory,
        vm.quizFactoryObj.markQuiz();
        vm.quizFactoryObj.changeState('quiz', false);
        vm.quizFactoryObj.changeState('results', true);
-
-
-
     }
 
 

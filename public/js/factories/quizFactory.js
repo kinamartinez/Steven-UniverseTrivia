@@ -26,12 +26,14 @@ app.factory('quizFactory', ['dataService', function (dataService) {
 
     function markQuiz() {
         quizObj.correctAnswers = dataService.correctAnswers;
+        console.log(quizObj.correctAnswers);
         for (let i = 0; i < dataService.quizQuestions.length; i++) {
             if (dataService.quizQuestions[i].selected === dataService.correctAnswers[i]) {
                 dataService.quizQuestions[i].correct = true;
                 quizObj.numCorrectAnswers++;
             } else {
                 dataService.quizQuestions[i].correct = false;
+
             }
         }
     }
